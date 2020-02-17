@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Input, Menu } from 'semantic-ui-react';
 
 const NavigationBar = () => {
-    const [active, setActive] = useState('Top');
+    const [active, setActive] = useState('');
     
     const handleClick = (e, { name }) => {
         setActive(name);
     }
 
     return (
-        <Menu size='huge' secondary widths='12'>
+        <Menu size='huge' secondary widths='12' stackable>
             <Menu.Item 
                 name='Top'
                 active={active === 'Top'}
