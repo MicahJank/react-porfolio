@@ -9,3 +9,8 @@
   a {
       font-size: 1.7rem;
   }
+
+  .ui, .ui.menu {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }

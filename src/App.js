@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NavigationBar from './components/Navigation/NavigationBar.js';
+import Intro from './components/Intro/Intro.js';
 
 import styled from 'styled-components';
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <Container>
       <NavigationBar />
+      <Intro />
     </Container>
   );
 }
