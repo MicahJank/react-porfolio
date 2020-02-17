@@ -7,12 +7,22 @@ import styled from 'styled-components';
 const Nav = styled.nav`
     .ui.menu {
         background-color: #2b2b2b;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
     .ui.menu a.item, .ui.menu a.item.active {
+        display: flex;
+        justify-content: center;
         color: white;
+        margin: 1rem;
+        width: 5%;
+
 
         :hover {
         color: white;
+        background-color: #3d3d3d;
+        border-radius: 1rem;
         }
     }
 `;
@@ -26,7 +36,7 @@ const NavigationBar = () => {
 
     return (
         <Nav>
-            <Menu size='huge' secondary widths='12' stackable>
+            <Menu secondary stackable>
                 <Menu.Item
                     name='Top'
                     active={active === 'Top'}
