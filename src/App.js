@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Main from './components/Main/Main.js';
+import { Container } from 'semantic-ui-react';
 
 function App() {
   return (
-    <div className="App">
-      <Main />
-    </div>
+    <Container fluid>
+      
+    </Container>
   );
 }
 
