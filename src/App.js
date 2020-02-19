@@ -16,15 +16,80 @@ const Container = styled.div`
 function App() {
   // the active component is what determines which component is visible on the screen
   const [activeComponent, setActiveComponent] = useState('Intro')
+  const [animation, setAnimation] = useState('FadeInLeft')
 
+  // animations
+  const Fade = ({ children, duration, playState }) => {
+    if(animation === 'FadeInLeft') {
+      return (
+        <Tween 
+          duration={duration}
+          playState={playState}
+          from={
+            { opacity: 0, x: '200px' }
+          }
+          to={
+            { opacity: 1, x: '0' }
+          }
+        >
+          {children}
+        </Tween>
+      )
+    } else if (animation === 'FadeOutLeft') {
+      return (
+        <Tween 
+          duration={duration}
+          playState={playState}
+          from={
+            { opacity: 1, x: '0' }
+          }
+          to={
+            { opacity: 0, x: '-200px' }
+          }
+        >
+          {children}
+        </Tween>
+      )
+    } else if (animation === 'FadeInRight') {
+      return (
+        <Tween 
+          duration={duration}
+          playState={playState}
+          from={
+            { opacity: 0, x: '-200px' }
+          }
+          to={
+            { opacity: 1, x: '0' }
+          }
+        >
+          {children}
+        </Tween>
+      )
+    } else if (animation === 'FadeOutRight') {
+      return (
+        <Tween 
+          duration={duration}
+          playState={playState}
+          from={
+            { opacity: 1, x: '0' }
+          }
+          to={
+            { opacity: 0, x: '200px' }
+          }
+        >
+          {children}
+        </Tween>
+      )
+    }
+  }
   return (
     <Container>
       <NavigationBar />
-      <Tween from={{ opacity: 0, y: '-50px'}} to={{ opacity: 1, y: '0' }} duration={2}>
+      <Fade duration={2}>
         <div className='tween'>
-        <Intro visible={activeComponent === 'Intro'} />
+          <Intro setAnimation={setAnimation} setActiveComponent={setActiveComponent} visible={activeComponent === 'Intro'} />
         </div>
-      </Tween>
+      </Fade>
       <Portfolio visible={activeComponent === 'Portfolio'} />
     </Container>
   );

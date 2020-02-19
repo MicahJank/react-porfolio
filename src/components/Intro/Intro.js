@@ -40,14 +40,20 @@ const Container = styled.section`
 
 `;
 
-const Intro = () => {
+const Intro = (props) => {
+
+    const handleClick = e => {
+        e.preventDefault();
+        props.setActiveComponent('Portfolio');
+        props.setAnimation('')
+    }
 
     return (
         <Container className='intro'>
             <Image centered size='medium' src={micahLogo} />
             <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
             <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
-            <Button className='portfolio' primary size='massive'>Check Out My Work</Button>
+            <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
         </Container>
     )
 };
