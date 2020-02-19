@@ -43,7 +43,7 @@ const Container = styled.section`
 const Intro = () => {
 
     return (
-        <Container>
+        <Container className='intro'>
             <Image centered size='medium' src={micahLogo} />
             <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
             <Header className='subHeader' textAlign='center'>a Web Developer.</Header>

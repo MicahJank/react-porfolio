@@ -5,13 +5,13 @@ import ProjectCard from './ProjectCard.js';
 import styled from 'styled-components';
 
 const Container = styled.section`
-    display: flex;
+    display: ${props => props.visible === true ? 'flex' : 'none'};
 `;
 
-const Portfolio = () => {
+const Portfolio = (props) => {
 
     return (
-        <Container>
+        <Container visible={props.visible} className='portfolio'>
             <ProjectCard img={''} title={''} description={''} />
             <ProjectCard img={''} title={''} description={''} />
             <ProjectCard img={''} title={''} description={''} />

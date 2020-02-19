@@ -35,7 +35,7 @@ const NavigationBar = () => {
     }
 
     return (
-        <Nav>
+        <Nav className='navBar'>
             <Menu secondary stackable>
                 <Menu.Item
                     name='Top'
