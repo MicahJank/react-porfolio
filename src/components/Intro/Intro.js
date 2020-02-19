@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styled from 'styled-components';
 import { Image, Header, Button } from 'semantic-ui-react';
 
 import micahLogo from '../../imgs/Micah-Svg.svg';
+
+import { Fade } from '../../utils/Animations.js';
 
 const Container = styled.section`
     display: flex;
@@ -42,19 +44,23 @@ const Container = styled.section`
 
 const Intro = (props) => {
 
+    const [animation, setAnimation] = useState('FadeInLeft')
+
     const handleClick = e => {
         e.preventDefault();
         props.setActiveComponent('Portfolio');
-        props.setAnimation('')
+        setAnimation('FadeOutLeft')
     }
-
+    
     return (
-        <Container className='intro'>
-            <Image centered size='medium' src={micahLogo} />
-            <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
-            <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
-            <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
-        </Container>
+        <Fade duration={2} animation={animation}>
+            <Container className='intro'>
+                <Image centered size='medium' src={micahLogo} />
+                <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
+                <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
+                <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
+            </Container>
+        </Fade>
     )
 };
 
