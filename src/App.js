@@ -15,28 +15,17 @@ const Container = styled.div`
 function App() {
   // the active component is what determines which component is visible on the screen
   const [activeComponent, setActiveComponent] = useState('Intro');
-
-  // The active component here will let me easily switch between which components should be on the screen
-  // i am trying to get the portfolio site working without using browser router or any routing at all
-  const Active = () => {
-    switch(activeComponent) {
-      case 'Intro':
-        return (<Intro setActiveComponent={setActiveComponent} visible={activeComponent === 'Intro'} />);
-
-      case 'Portfolio':
-        return (<Portfolio visible={activeComponent === 'Portfolio'} />);
-  
-      default: 
-        return (<Intro setActiveComponent={setActiveComponent} visible={activeComponent === 'Intro'} />);
-    }
-
-  }
   
   return (
+    <>
+    <NavigationBar />
     <Container>
-      <NavigationBar />
-      <Active />
+      <div className='main'>
+        <Intro setActiveComponent={setActiveComponent} />
+        {activeComponent === 'Portfolio' ? <Portfolio visible={activeComponent === 'Portfolio'} /> : ''}
+      </div>
     </Container>
+    </>
   );
 }
 

@@ -3,14 +3,14 @@ import React from 'react';
 import { Tween } from 'react-gsap';
 
 // fade animations
-export const Fade = ({ children, duration, playState, animation }) => {
+export const Fade = ({ children, duration, playState, animation, fadeDistance }) => {
     if(animation === 'FadeInLeft') {
       return (
         <Tween 
           duration={duration}
           playState={playState}
           from={
-            { opacity: 0, x: '200px' }
+            { opacity: 0, x: fadeDistance }
           }
           to={
             { opacity: 1, x: '0' }
@@ -28,7 +28,7 @@ export const Fade = ({ children, duration, playState, animation }) => {
             { opacity: 1, x: '0' }
           }
           to={
-            { opacity: 0, x: '-200px' }
+            { opacity: 0, x: -fadeDistance }
           }
         >
           {children}
@@ -40,7 +40,7 @@ export const Fade = ({ children, duration, playState, animation }) => {
           duration={duration}
           playState={playState}
           from={
-            { opacity: 0, x: '-200px' }
+            { opacity: 0, x: -fadeDistance }
           }
           to={
             { opacity: 1, x: '0' }
@@ -58,7 +58,7 @@ export const Fade = ({ children, duration, playState, animation }) => {
             { opacity: 1, x: '0' }
           }
           to={
-            { opacity: 0, x: '200px' }
+            { opacity: 0, x: fadeDistance }
           }
         >
           {children}

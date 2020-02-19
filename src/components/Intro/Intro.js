@@ -11,6 +11,8 @@ const Container = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    left: 37%;
 
     .ui.medium.centered.image {
         margin-top: 4rem;
@@ -27,7 +29,7 @@ const Container = styled.section`
 
     .ui.massive.primary.button {
         margin-top: 4rem;
-        width: 25%;
+        width: 400px;
         font-size: 3rem;
         padding: 3rem;
         background-color: #43B3E0;
@@ -53,7 +55,7 @@ const Intro = (props) => {
     }
     
     return (
-        <Fade duration={2} animation={animation}>
+        <Fade duration={2} animation={animation} fadeDistance={500}>
             <Container className='intro'>
                 <Image centered size='medium' src={micahLogo} />
                 <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
