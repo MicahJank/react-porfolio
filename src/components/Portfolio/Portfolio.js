@@ -8,7 +8,7 @@ import { Fade } from '../../utils/Animations.js';
 
 const Container = styled.section`
     display: flex;
-    height: 400px;
+    padding: 10% 0;
     position: absolute;
     left: 27%;
 `;

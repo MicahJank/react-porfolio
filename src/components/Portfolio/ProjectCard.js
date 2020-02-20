@@ -5,7 +5,7 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 const ProjectCard = () => {
 
     return (
-        <Card>
+        <Card centered>
             <Image />
             <Card.Content>
                 <Card.Header>Title</Card.Header>
