@@ -58,11 +58,26 @@ export const Fade = ({ children, duration, playState, animation, fadeDistance })
             { opacity: 1, x: '0' }
           }
           to={
-            { opacity: 0, x: fadeDistance }
+            { opacity: 0, x: '500px' }
           }
         >
           {children}
         </Tween>
       )
-    }
+    } else if (animation === 'Initial') {
+      return (
+        <Tween 
+          duration={duration}
+          playState={playState}
+          from={
+            { opacity: 0, y: "-50px" }
+          }
+          to={
+            { opacity: 1, y: 0 }
+          }
+        >
+          {children}
+        </Tween>
+      )
+        }
   }

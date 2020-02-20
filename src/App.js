@@ -17,17 +17,16 @@ function App() {
   // the active component is what determines which component is visible on the screen
   const [activeComponent, setActiveComponent] = useLocalStorage('active', 'Intro');
 
-  // useEffect(() => {
-  //   localStorage.setItem('active', 'Intro')
-  // }, [])
   
+  
+
   return (
     <>
-    <NavigationBar />
+    <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
     <Container>
       <div className='main'>
-        {activeComponent === "Intro" ? <Intro setActiveComponent={setActiveComponent} /> : ''}
-        {activeComponent === 'Portfolio' ? <Portfolio visible={activeComponent === 'Portfolio'} /> : ''}
+        <Intro setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
+        <Portfolio activeComponent={activeComponent} />
       </div>
     </Container>
     </>
