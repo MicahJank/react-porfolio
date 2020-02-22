@@ -27,19 +27,20 @@ const Nav = styled.nav`
     }
 `;
 
-const NavigationBar = () => {
+const NavigationBar = (props) => {
     const [active, setActive] = useState('');
     
     const handleClick = (e, { name }) => {
         setActive(name);
+        props.setActiveComponent(name);
     }
 
     return (
-        <Nav>
+        <Nav className='navBar'>
             <Menu secondary stackable>
                 <Menu.Item
-                    name='Top'
-                    active={active === 'Top'}
+                    name='Intro'
+                    active={active === 'Intro'}
                     onClick={handleClick}
                 />
                 <Menu.Item 

@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 import { Image, Header, Button } from 'semantic-ui-react';
 
 import micahLogo from '../../imgs/Micah-Svg.svg';
 
+import { Fade } from '../../utils/Animations.js';
+
 const Container = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    left: 37%;
 
     .ui.medium.centered.image {
         margin-top: 4rem;
@@ -25,7 +29,7 @@ const Container = styled.section`
 
     .ui.massive.primary.button {
         margin-top: 4rem;
-        width: 25%;
+        width: 400px;
         font-size: 3rem;
         padding: 3rem;
         background-color: #43B3E0;
@@ -40,15 +44,44 @@ const Container = styled.section`
 
 `;
 
-const Intro = () => {
+const Intro = (props) => {
 
+    const [animation, setAnimation] = useState('FadeInLeft')
+    const [playState, setplayState] = useState('stop')
+    
+
+    useEffect(() => {
+        switch(props.activeComponent) {
+            case "Portfolio":
+                setplayState('play');
+                setAnimation('FadeOutLeft');
+                break;
+
+            case "Contact":
+                setplayState('play');
+                setAnimation('FadeOutLeft');
+                break;
+
+            default:
+                setplayState('play');
+                setAnimation('FadeInLeft');
+        }
+    }, [props.activeComponent])
+
+    const handleClick = e => {
+        e.preventDefault();
+        props.setActiveComponent('Portfolio');
+    }
+    
     return (
-        <Container>
-            <Image centered size='medium' src={micahLogo} />
-            <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
-            <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
-            <Button className='portfolio' primary size='massive'>Check Out My Work</Button>
-        </Container>
+        <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
+            <Container visible={props.visible} className='intro'>
+                <Image centered size='medium' src={micahLogo} />
+                <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
+                <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
+                <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
+            </Container>
+        </Fade>
     )
 };
 
