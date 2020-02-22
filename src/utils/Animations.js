@@ -58,7 +58,7 @@ export const Fade = ({ children, duration, playState, animation, fadeDistance })
             { opacity: 1, x: '0' }
           }
           to={
-            { opacity: 0, x: '500px' }
+            { opacity: 0, x: fadeDistance }
           }
         >
           {children}
@@ -70,7 +70,7 @@ export const Fade = ({ children, duration, playState, animation, fadeDistance })
           duration={duration}
           playState={playState}
           from={
-            { opacity: 0, y: "-50px" }
+            { opacity: 0, y: -fadeDistance }
           }
           to={
             { opacity: 1, y: 0 }

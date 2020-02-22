@@ -11,6 +11,9 @@ const Container = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 25%;
 `;
 
 const Contact = (props) => {
@@ -44,19 +47,21 @@ const Contact = (props) => {
     return (
         <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
             <Container>
-                <Form>
+                <Form size="massive">
                     <Form.Group>
-                        <Form.Field 
+                        <Form.Field
                             id='form-input-control-first-name'
                             control={Input}
                             label='First name'
                             placeholder='First name'
+                            type="text" 
                         />
                         <Form.Field 
                             id='form-input-control-last-name'
                             control={Input}
                             label='Last name'
                             placeholder='Last name'
+                            type="text"
                         />
                     </Form.Group>
                         <Form.Field
@@ -68,18 +73,21 @@ const Contact = (props) => {
                                 content: "Please enter a valid email address",
                                 pointing: "below"
                             }}
+                            type="email" 
                         />
                         <Form.Field
                             id='form-textarea-control-opinion'
                             control={TextArea}
                             label='Message'
                             placeholder='Message'
+                            type="text" 
                         />
                         <Form.Field
                             id='form-button-control-public'
                             control={Button}
                             content='Confirm'
                             label='Label with htmlFor'
+                            type="submit" 
                         />  
                 </Form>
             </Container>
