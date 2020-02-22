@@ -14,6 +14,20 @@ const Container = styled.section`
     position: absolute;
     left: 0;
     top: 25%;
+
+    .ui.form .field>label {
+        display: none;
+    }
+
+    .field.submitBtn {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .field .ui.button {
+        font-size: 1.5rem;
+        width: 40%;
+    }
 `;
 
 const Contact = (props) => {
@@ -82,11 +96,12 @@ const Contact = (props) => {
                             placeholder='Message'
                             type="text" 
                         />
-                        <Form.Field
+                        <Form.Field primary
+                            className="submitBtn"
                             id='form-button-control-public'
                             control={Button}
-                            content='Confirm'
-                            label='Label with htmlFor'
+                            content='Submit'
+                            label='Submit'
                             type="submit" 
                         />  
                 </Form>
