@@ -105,7 +105,7 @@ const Contact = (props) => {
                             type="submit" 
                         />  
                 </Form>
-            </Container>
+            </Container> 
         </Fade>
     );
 };
