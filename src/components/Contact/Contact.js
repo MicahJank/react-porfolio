@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { Fade } from '../../utils/Animations.js';
 
 
+
 const Container = styled.section`
     width: 100%;
     display: flex;
@@ -37,6 +38,9 @@ const Contact = (props) => {
     // determines when the component should play the animation - default is stop because on initial load of page if the
     // component is not the active component it should be invisible
     const [playState, setPlayState] = useState('stop');
+
+    // useForm will help keep the state of the form
+    // const [state, handleChange, clearForm, errors] = useForm();
 
     // the useEffect will run whenever the activeComponent changes in the App.js
     useEffect(() => {
