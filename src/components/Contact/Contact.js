@@ -113,7 +113,7 @@ const Contact = (props) => {
                             onChange={handleChange} 
                         />
                         <Form.Field
-                            id='form-textarea-control-opinion'
+                            id='form-textarea-control-opinion' 
                             control={TextArea}
                             label='Message'
                             placeholder='Message'
