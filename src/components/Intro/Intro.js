@@ -60,7 +60,7 @@ const Intro = (props) => {
             case "Contact":
                 setplayState('play');
                 setAnimation('FadeOutLeft');
-                break;
+                break; 
 
             default:
                 setplayState('play');
