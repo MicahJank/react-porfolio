@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 import { Fade } from '../../utils/Animations.js';
 
+import useForm from '../../utils/useForm.js';
+
 
 const Container = styled.section`
     width: 100%;
@@ -38,6 +40,13 @@ const Contact = (props) => {
     // component is not the active component it should be invisible
     const [playState, setPlayState] = useState('stop');
 
+    // useForm will help keep the state of the form
+    const [state, handleChange, clearForm, errors] = useForm();
+
+    // handles the loading state for the form when submitting the information
+    const [loading, setLoading] = useState(false);
+
+
     // the useEffect will run whenever the activeComponent changes in the App.js
     useEffect(() => {
         console.log("TCL: Contact -> props.activeComponent", props.activeComponent)
@@ -58,17 +67,27 @@ const Contact = (props) => {
         }
     }, [props.activeComponent]);
 
+    const submitHandler = event => {
+        event.preventDefault();
+
+        // TODO - figure out how to connect this form so it sends the message to my gmail account
+        console.log(state);
+    }
+
     return (
         <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
             <Container>
-                <Form size="massive">
+                <Form size="massive" onSubmit={submitHandler} loading={loading}>
                     <Form.Group>
                         <Form.Field
                             id='form-input-control-first-name'
                             control={Input}
                             label='First name'
                             placeholder='First name'
-                            type="text" 
+                            type="text"
+                            name='first-name'
+                            value={state['first-name'] || ''}
+                            onChange={handleChange} 
                         />
                         <Form.Field 
                             id='form-input-control-last-name'
@@ -76,6 +95,9 @@ const Contact = (props) => {
                             label='Last name'
                             placeholder='Last name'
                             type="text"
+                            name='last-name'
+                            value={state['last-name'] || ''}
+                            onChange={handleChange} 
                         />
                     </Form.Group>
                         <Form.Field
@@ -83,18 +105,22 @@ const Contact = (props) => {
                             control={Input}
                             label="Email"
                             placeholder="Email"
-                            error={{
-                                content: "Please enter a valid email address",
-                                pointing: "below"
-                            }}
-                            type="email" 
+                            type="email"
+                            required
+                            name='email' 
+                            error={errors.email}
+                            value={state.email || ''}
+                            onChange={handleChange} 
                         />
                         <Form.Field
-                            id='form-textarea-control-opinion'
+                            id='form-textarea-control-opinion' 
                             control={TextArea}
                             label='Message'
                             placeholder='Message'
-                            type="text" 
+                            type="text"
+                            name='message'
+                            value={state.message || ''}
+                            onChange={handleChange}  
                         />
                         <Form.Field primary
                             className="submitBtn"
