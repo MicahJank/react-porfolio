@@ -7,10 +7,11 @@ import styled from 'styled-components';
 import { Fade } from '../../utils/Animations.js';
 
 const Container = styled.section`
+    width: 100%;
     display: flex;
     padding: 10% 0;
     position: absolute;
-    left: 27%;
+    left: 0;
 `;
 
 const Portfolio = (props) => {
