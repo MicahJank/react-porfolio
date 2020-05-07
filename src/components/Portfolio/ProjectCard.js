@@ -2,15 +2,16 @@ import React from 'react';
 
 import { Card, Icon, Image } from 'semantic-ui-react';
 
-const ProjectCard = () => {
+
+const ProjectCard = (props) => {
 
     return (
         <Card centered>
-            <Image />
             <Card.Content>
-                <Card.Header>Title</Card.Header>
-                <Card.Description>Description</Card.Description>
+            <Card.Header as={'h1'}>{props.title}</Card.Header>
+                {/* <Card.Description>{props.description}</Card.Description> */}
             </Card.Content>
+            <Image src={props.img} wrapped ui={false} />
             <Card.Content extra>
                 <a>
                 <Icon name='user' />
