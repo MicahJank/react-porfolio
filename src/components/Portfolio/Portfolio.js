@@ -7,18 +7,21 @@ import styled from 'styled-components';
 import { Fade } from '../../utils/Animations.js';
 
 import tidyHive from '../../imgs/TidyHive.png';
+import githubUserCard from '../../imgs/GithubUserCards.png';
+import expatJournal from '../../imgs/ExpatJournal.png';
 
 const Container = styled.section`
     width: 100%;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 10% 0;
     position: absolute;
     left: 0;
 
     .ui.centered.card {
-        width: 40%;
-        margin: 5%;
+        width: 30%;
+        margin: 2%;
         text-align: center;
         
         h1.header {
@@ -52,8 +55,8 @@ const Portfolio = (props) => {
         <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
             <Container visible={props.visible} className='portfolio'>
                 <ProjectCard img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
-                <ProjectCard img={''} title={''} description={''} />
-                <ProjectCard img={''} title={''} description={''} />
+                <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
+                <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
             </Container>
         </Fade>
     )
