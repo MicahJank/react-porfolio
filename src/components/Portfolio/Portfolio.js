@@ -14,8 +14,9 @@ const Container = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding-top: 100px;
     flex-wrap: wrap;
-    padding: 10% 0;
     position: absolute;
     left: 0;
 
