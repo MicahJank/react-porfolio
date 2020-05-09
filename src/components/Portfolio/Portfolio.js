@@ -13,17 +13,21 @@ import expatJournal from '../../imgs/ExpatJournal.png';
 const Container = styled.section`
     width: 100%;
     display: flex;
-    align-items: center;
+    justify-content: center;
     padding-top: 100px;
     flex-wrap: wrap;
     position: absolute;
     left: 0;
+    z-index: 1;
 
     .ui.centered.card {
         width: 35%;
+        height: 300px;
         max-width: 450px;
         text-align: center;
+        margin: 20px;
         margin-bottom: 0;
+        cursor: pointer;
         
         h1.header {
             font-size: 4rem;
