@@ -17,8 +17,8 @@ const ProjectCard = (props) => {
             </Card.Content>
            
         </Card>
-        <Modal open={projectModal} onClose={() => setProjectModal(false)}>
-            <ProjectModal />
+        <Modal dimmer={'blurring'} centered={false} open={projectModal} onClose={() => setProjectModal(false)}>
+            <ProjectModal title={props.title} description={props.description} />
         </Modal>
         </>
     )

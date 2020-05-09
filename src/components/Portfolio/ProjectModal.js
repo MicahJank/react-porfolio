@@ -2,17 +2,17 @@ import React from 'react';
 
 import { Modal, Button, Header, Image } from 'semantic-ui-react';
 
-const ProjectModal = () => {
+const ProjectModal = props => {
 
     return (
         <>
             <Modal.Header>
-                A modal
+                Demo Video
             </Modal.Header>
             <Modal.Content>
                 <Modal.Description>
-                    <Header>Stuff</Header>
-                    <p>A paragraph here.</p>
+                    <Header>{props.title}</Header>
+                    <p>{props.description}</p>
                 </Modal.Description>
             </Modal.Content>
         </>
