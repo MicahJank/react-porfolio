@@ -32,6 +32,10 @@ const Container = styled.section`
         h1.header {
             font-size: 4rem;
         }
+
+        .middle-section {
+            border-bottom: 1px solid black;
+        }
     }
 `;
 

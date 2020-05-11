@@ -1,18 +1,23 @@
 import React from 'react';
 
-import { Modal, Button, Header, Image } from 'semantic-ui-react';
+import { Modal, Button, Header, Image, Embed } from 'semantic-ui-react';
 
 const ProjectModal = props => {
 
     return (
         <>
             <Modal.Header>
-                Demo Video
+                <Embed id='O6Xo21L0ybE' source='youtube' />
             </Modal.Header>
-            <Modal.Content>
+            <Modal.Content className={'middle-section'}>
                 <Modal.Description>
                     <Header>{props.title}</Header>
                     <p>{props.description}</p>
+                </Modal.Description>
+            </Modal.Content>
+            <Modal.Content>
+                <Modal.Description>
+                    Hello
                 </Modal.Description>
             </Modal.Content>
         </>
