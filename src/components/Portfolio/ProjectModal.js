@@ -19,7 +19,7 @@ const ProjectModal = props => {
                 <Modal.Description>
                     Hello
                 </Modal.Description>
-            </Modal.Content>
+            </Modal.Content> 
         </>
     )
 }
