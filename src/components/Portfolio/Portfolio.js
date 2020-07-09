@@ -61,7 +61,7 @@ const Portfolio = (props) => {
         }
     }, [props.activeComponent])
     return (
-        <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
+        <Fade duration={4} animation={animation} fadeDistance={2000} playState={playState}>
             <Container visible={props.visible} className='portfolio'>
                 <ProjectCard img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
                 <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
