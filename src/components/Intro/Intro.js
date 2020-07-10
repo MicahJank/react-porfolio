@@ -8,11 +8,12 @@ import micahLogo from '../../imgs/Micah-Svg.svg';
 import { Fade } from '../../utils/Animations.js';
 
 const Container = styled.section`
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
-    left: 37%;
+    left: 0;
 
     .ui.medium.centered.image {
         margin-top: 4rem;
@@ -60,7 +61,7 @@ const Intro = (props) => {
             case "Contact":
                 setplayState('play');
                 setAnimation('FadeOutLeft');
-                break;
+                break; 
 
             default:
                 setplayState('play');

@@ -75,9 +75,9 @@ const Contact = (props) => {
     }
 
     return (
-        <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
+        <Fade duration={3} animation={animation} fadeDistance={1300} playState={playState}>
             <Container>
-                <Form size="massive" onSubmit={submitHandler} loading={loading}>
+                <Form action={'https://formspree.io/micahjank@gmail.com'} size="massive" onSubmit={submitHandler} loading={loading}>
                     <Form.Group>
                         <Form.Field
                             id='form-input-control-first-name'
