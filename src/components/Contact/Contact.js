@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Form, Input, TextArea, Button, Modal, Message, Image, Transition } from 'semantic-ui-react';
+import { Form, Input, TextArea, Button, Modal, Message, Image, Transition, TransitionablePortal } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -36,6 +36,7 @@ const Container = styled.section`
     .ui.modal.transition.visible.active {
         background-color: black;
     }
+
 `;
 
 const Contact = (props) => {
@@ -54,7 +55,7 @@ const Contact = (props) => {
 
     const [status, setStatus] = useState("");
 
-    const [openModal, setOpenModal] = useState(true); // change to false
+    const [openModal, setOpenModal] = useState(false); // change to false
 
 
     // the useEffect will run whenever the activeComponent changes in the App.js
@@ -157,19 +158,17 @@ const Contact = (props) => {
                             type="submit" 
                         />  
                 </Form>
-                {/* transition not working */}
-                <Transition animation='fade up' duration={1000} visible={true} >
+                <TransitionablePortal open={openModal} transition={{animation: "scale", duraction: 1000}}>
                     <Modal style={{ background: 'none', boxShadow: 'none'}} open={openModal} onClose={() => setOpenModal(false)}>
-                            <Image centered size='medium' src={micahLogo} />
-                            <Message
-                                size='massive'
-                                success
-                                header='Thanks a bunch!'
-                                content='Ill be sure to get back to you ASAP!'
-                                
-                            />
+                        {/* <Transition animation='fade up' duration={1000} visible={true} > */}
+                            <Message style={{ textAlign: 'center', boxShadow: 'none'}} size='massive' color="olive">
+                                <Image centered size='medium' src={micahLogo} />
+                                <Message.Header>Thanks a bunch for the message!</Message.Header>
+                                <Message.Content>I'll be sure to get back to you ASAP!</Message.Content>
+                            </Message>
+                        {/* </Transition> */}
                     </Modal>
-                </Transition>
+                </TransitionablePortal>
             </Container> 
         </Fade>
         {/* status === 'SUCCESS' */}
