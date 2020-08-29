@@ -12,7 +12,12 @@ import styled from 'styled-components';
 const Container = styled.div`
   background: linear-gradient(to bottom, rgb(146, 20, 30), rgb(212, 21, 37) );
   height: 100vh;
+
+  hr {
+    width: 40%;
+  }
 `;
+
 
 function App() {
   // the active component is what determines which component is visible on the screen
@@ -23,8 +28,9 @@ function App() {
 
   return (
     <>
-    <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
     <Container>
+      <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
+      <hr/>
       <div className='main'>
         <Intro setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
         <Portfolio setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
