@@ -16,7 +16,7 @@ const Container = styled.div`
 
 function App() {
   // the active component is what determines which component is visible on the screen
-  const [activeComponent, setActiveComponent] = useLocalStorage('active', 'Intro');
+  const [activeComponent, setActiveComponent] = useState('Intro')
 
   
   
