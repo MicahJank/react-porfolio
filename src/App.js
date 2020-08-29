@@ -4,7 +4,9 @@ import NavigationBar from './components/Navigation/NavigationBar.js';
 import Intro from './components/Intro/Intro.js';
 import Portfolio from './components/Portfolio/Portfolio.js';
 import Contact from './components/Contact/Contact.js';
+import Grid from './components/Grid/Grid.js';
 import { useSessionStorage } from './utils/useSessionStorage.js';
+
 
 import styled from 'styled-components';
 
@@ -29,6 +31,7 @@ function App() {
   return (
     <>
     <Container>
+      <Grid />
       <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
       <hr/>
       <div className='main'>
