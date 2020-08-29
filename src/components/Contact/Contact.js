@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-import { Form, Input, TextArea, Button } from 'semantic-ui-react';
+import { Form, Input, TextArea, Button, Modal, Message, Image, Transition, TransitionablePortal } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
 import { Fade } from '../../utils/Animations.js';
 
 import useForm from '../../utils/useForm.js';
+
+import micahLogo from '../../imgs/Micah-Svg.svg';
 
 
 const Container = styled.section`
@@ -30,6 +32,11 @@ const Container = styled.section`
         font-size: 1.5rem;
         width: 40%;
     }
+
+    .ui.modal.transition.visible.active {
+        background-color: black;
+    }
+
 `;
 
 const Contact = (props) => {
@@ -45,6 +52,10 @@ const Contact = (props) => {
 
     // handles the loading state for the form when submitting the information
     const [loading, setLoading] = useState(false);
+
+    const [status, setStatus] = useState("");
+
+    const [openModal, setOpenModal] = useState(false); // change to false
 
 
     // the useEffect will run whenever the activeComponent changes in the App.js
@@ -69,15 +80,31 @@ const Contact = (props) => {
 
     const submitHandler = event => {
         event.preventDefault();
-
-        // TODO - figure out how to connect this form so it sends the message to my gmail account
-        console.log(state);
+        setLoading(true);
+        const form = event.target;
+        const data = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onreadystatechange = () => {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) {
+            clearForm();
+            setLoading(false);
+            setOpenModal(true);
+            setStatus("SUCCESS");
+        } else {
+            setStatus("ERROR");
+        }
+        };
+        xhr.send(data);
     }
 
     return (
+        <>
         <Fade duration={3} animation={animation} fadeDistance={1300} playState={playState}>
             <Container>
-                <Form action={'https://formspree.io/micahjank@gmail.com'} size="massive" onSubmit={submitHandler} loading={loading}>
+                <Form action={'https://formspree.io/mvowwebd'} method={"POST"} size="massive" onSubmit={submitHandler} loading={loading}>
                     <Form.Group>
                         <Form.Field
                             id='form-input-control-first-name'
@@ -131,8 +158,21 @@ const Contact = (props) => {
                             type="submit" 
                         />  
                 </Form>
+                <TransitionablePortal open={openModal} transition={{animation: "scale", duraction: 1000}}>
+                    <Modal style={{ background: 'none', boxShadow: 'none'}} open={openModal} onClose={() => setOpenModal(false)}>
+                        {/* <Transition animation='fade up' duration={1000} visible={true} > */}
+                            <Message style={{ textAlign: 'center', boxShadow: 'none'}} size='massive' color="olive">
+                                <Image centered size='medium' src={micahLogo} />
+                                <Message.Header>Thanks a bunch for the message!</Message.Header>
+                                <Message.Content>I'll be sure to get back to you ASAP!</Message.Content>
+                            </Message>
+                        {/* </Transition> */}
+                    </Modal>
+                </TransitionablePortal>
             </Container> 
         </Fade>
+        {/* status === 'SUCCESS' */}
+        </>
     );
 };
 

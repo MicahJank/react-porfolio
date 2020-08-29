@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 const Nav = styled.nav` 
     .ui.menu {
-        background-color: #2b2b2b;
         display: flex;
         justify-content: center;
         text-align: center;
@@ -15,13 +14,13 @@ const Nav = styled.nav`
         display: flex;
         justify-content: center; 
         color: white;
-        margin: 1rem;
-        width: 5%;
+        margin: 1rem 1rem 0;
+        width: 10%;
+        border-radius: 1rem;
 
 
         :hover {
         color: white;
-        background-color: #3d3d3d;
         border-radius: 1rem;
         }
     }
