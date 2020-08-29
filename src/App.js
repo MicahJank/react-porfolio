@@ -27,8 +27,8 @@ function App() {
     <Container>
       <div className='main'>
         <Intro setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-        <Portfolio activeComponent={activeComponent} />
-        <Contact activeComponent={activeComponent} />
+        <Portfolio setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
+        <Contact setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
       </div>
     </Container>
     </>
