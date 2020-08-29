@@ -5,6 +5,7 @@ import ProjectCard from './ProjectCard.js';
 import styled from 'styled-components';
 
 import { Fade } from '../../utils/Animations.js';
+import { Header } from 'semantic-ui-react'; 
 
 import tidyHive from '../../imgs/TidyHive.png';
 import githubUserCard from '../../imgs/GithubUserCards.png';
@@ -66,6 +67,7 @@ const Portfolio = (props) => {
                 <ProjectCard img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
                 <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
                 <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
+                <Header as="h1" textAlign='center'>a Web Developer.</Header>
             </Container>
         </Fade>
     )

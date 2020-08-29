@@ -4,7 +4,7 @@ import NavigationBar from './components/Navigation/NavigationBar.js';
 import Intro from './components/Intro/Intro.js';
 import Portfolio from './components/Portfolio/Portfolio.js';
 import Contact from './components/Contact/Contact.js';
-import { useLocalStorage } from './utils/useLocalStorage.js';
+import { useSessionStorage } from './utils/useSessionStorage.js';
 
 import styled from 'styled-components';
 
@@ -16,7 +16,7 @@ const Container = styled.div`
 
 function App() {
   // the active component is what determines which component is visible on the screen
-  const [activeComponent, setActiveComponent] = useState('Intro')
+  const [activeComponent, setActiveComponent] = useSessionStorage('active', 'Intro');
 
   
   
