@@ -6,7 +6,7 @@ import Portfolio from './components/Portfolio/Portfolio.js';
 import Contact from './components/Contact/Contact.js';
 import Grid from './components/Grid/Grid.js';
 import { useSessionStorage } from './utils/useSessionStorage.js';
-
+import VideoBg from './components/VideoBG/VideoBG.js';
 
 import styled from 'styled-components';
 
@@ -31,7 +31,8 @@ function App() {
   return (
     <>
     <Container>
-      <Grid />
+      {/* <Grid /> */}
+      <VideoBg />
       <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
       <hr/>
       <div className='main'>
