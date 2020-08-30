@@ -78,7 +78,7 @@ const Intro = (props) => {
     }
     
     return (
-        <Fade duration={2} animation={animation} fadeDistance={900} playState={playState}>
+        <Fade duration={2} animation={animation} fadeDistance={1100} playState={playState}>
             <Container visible={props.visible} className='intro'>
                 <Image centered size='medium' src={micahLogo} />
                 <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
