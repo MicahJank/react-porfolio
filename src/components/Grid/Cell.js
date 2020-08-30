@@ -10,7 +10,7 @@ const CellSquare = styled.div`
     }
 `;
 
-const Cell = ({ clickFunction, key, row, col, currentGrid, gameRunning, cellOn }) => {
+const Cell = ({ clickFunction, key, row, col, gameRunning, cellOn }) => {
 
     const toggleCell = () => {
         if (!gameRunning) {

@@ -3,8 +3,8 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Cell from './Cell.js';
 import styled from 'styled-components';
 
-const numCols = 50;
-const numRows = 50;
+const numCols = 35;
+const numRows = 35;
 
 // operations
 // this will make it easier for me to determine the neighbors of an 'alive' cell
@@ -35,7 +35,6 @@ const GridContainer = styled.div`
 
 const Grid = () => {
     const [currentGrid, setCurrentGrid] = useState([]);
-    
     // i am using the speed in the useCallback hook - therefore i will need to make a ref of it so the speed can update properly
     const [speed, setSpeed] = useState(2000); // speed is in ms
     const speedRef = useRef(speed);
@@ -58,11 +57,12 @@ const Grid = () => {
         // grid is the current value of the grid
         // since i am mapping over it the returned result is a copy of the original and doesnt mutate the original
         setCurrentGrid((grid) => {
+
             return grid.map((rowValue, rowIndex) => {
                 // nested arrays inside grid so i need to map again to make sure the nested arrays are copied as well
                 return rowValue.map((colValue, colIndex) => { 
                     let neighbors = 0;
-
+                    // let currentCell = [rowIndex, colIndex];
                     operations.forEach(([x,y]) => {
                         // let newRowIndex = rowIndex;
                         // let newColIndex = colIndex;
@@ -83,13 +83,11 @@ const Grid = () => {
 
     
                         if (newRowIndex >= 0 && newRowIndex < numRows && newColIndex >= 0 && newColIndex < numCols) {
-                            // current is the current grid the user sees 
-                            // so our neighbors should be based on that
                             neighbors += grid[newRowIndex][newColIndex]; 
                         }
                     });
                     
-                    // gridCopy is the grid that we can manipulate while the 'grid' is being displayed to the user
+                    // gridCopy is the grid that we can manipulate while the 'grid' is being displayed to the use
                     if ((grid[rowIndex][colIndex] === 1 && neighbors < 2) || (grid[rowIndex][colIndex] === 1 && neighbors > 3)) {
                         return 0;
                     } else if (grid[rowIndex][colIndex] === 0 && neighbors === 3) {
@@ -118,7 +116,7 @@ const Grid = () => {
         <GridContainer>
             <div style={
                 { display: 'grid',
-                gridTemplateColumns: `repeat(${numCols}, 2fr)`,
+                gridTemplateColumns: `repeat(${numCols}, 0.5fr)`,
                 width: '100vw',
                 height: '100vh'
                 }} 
@@ -127,7 +125,6 @@ const Grid = () => {
                         rows.map((cols, k) => {
                             return <Cell cellOn={currentGrid[i][k]} 
                                 key={`${i}-${k}`} row={i} col={k} 
-                                currentGrid={currentGrid}
                                 gameRunning={running} />
                         })
                     )}
