@@ -4,7 +4,7 @@ import Cell from './Cell.js';
 import styled from 'styled-components';
 
 const numCols = 50;
-const numRows = 35;
+const numRows = 50;
 
 // operations
 // this will make it easier for me to determine the neighbors of an 'alive' cell
@@ -118,7 +118,7 @@ const Grid = () => {
         <GridContainer>
             <div style={
                 { display: 'grid',
-                gridTemplateColumns: `repeat(${numCols}, 1fr)`,
+                gridTemplateColumns: `repeat(${numCols}, 2fr)`,
                 width: '100vw',
                 height: '100vh'
                 }} 

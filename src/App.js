@@ -31,8 +31,8 @@ function App() {
   return (
     <>
     <Container>
-      {/* <Grid /> */}
-      <VideoBg />
+      <Grid />
+      {/* <VideoBg /> */}
       <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
       <hr/>
       <div className='main'>

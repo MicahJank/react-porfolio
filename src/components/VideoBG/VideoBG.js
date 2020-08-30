@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import videosrc from '../video/GameOfLife.mov';
+// import videosrc from '../video/GameOfLife.mov';
 const Container = styled.div`
     position: absolute;
     width: 100%;
@@ -21,7 +21,7 @@ const VideoBG = () => {
     return (
         <Container>
             <video autoPlay loop muted>
-                <source src={videosrc} type="video/mov" />
+                {/* <source src={videosrc} type="video/mov" /> */}
                 Your browser does not support this video tag.
             </video>
         </Container>
