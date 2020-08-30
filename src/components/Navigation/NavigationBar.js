@@ -4,7 +4,8 @@ import { Input, Menu } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
-const Nav = styled.nav` 
+const Nav = styled.nav`
+
     .ui.menu {
         display: flex;
         justify-content: center;

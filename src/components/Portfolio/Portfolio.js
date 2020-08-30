@@ -19,6 +19,7 @@ const Container = styled.section`
     flex-wrap: wrap;
     position: absolute;
     left: 0;
+    top: 8%;
     z-index: 1;
 
     .ui.centered.card {
