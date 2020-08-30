@@ -14,6 +14,9 @@ const Container = styled.section`
     align-items: center;
     position: absolute;
     left: 0;
+    opacity: 1;
+    transition: opacity 1s;
+     
 
     .ui.medium.centered.image {
         margin-top: 4rem;

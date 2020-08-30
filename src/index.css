@@ -9,6 +9,7 @@
 
   body {
     height: 100vh;
+    background: linear-gradient(to bottom, rgb(146, 20, 30), rgb(212, 21, 37) );
   }
 
   a {

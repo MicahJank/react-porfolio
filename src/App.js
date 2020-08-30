@@ -4,13 +4,15 @@ import NavigationBar from './components/Navigation/NavigationBar.js';
 import Intro from './components/Intro/Intro.js';
 import Portfolio from './components/Portfolio/Portfolio.js';
 import Contact from './components/Contact/Contact.js';
+import Grid from './components/Grid/Grid.js';
 import { useSessionStorage } from './utils/useSessionStorage.js';
+import video from './components/VideoBG/gameoflife-edit.mp4';
 
 import styled from 'styled-components';
 
 
 const Container = styled.div`
-  background: linear-gradient(to bottom, rgb(146, 20, 30), rgb(212, 21, 37) );
+  
   height: 100vh;
 
   hr {
@@ -18,17 +20,25 @@ const Container = styled.div`
   }
 `;
 
+const VideoContainer = styled.div`
+ position: absolute;
+ z-index: -1;
+`;
+
 
 function App() {
   // the active component is what determines which component is visible on the screen
   const [activeComponent, setActiveComponent] = useSessionStorage('active', 'Intro');
 
-  
-  
-
   return (
     <>
     <Container>
+      {/* <Grid /> */}
+      <VideoContainer>
+        <video autoPlay loop muted>
+          <source src={video} type="video/mp4" />
+        </video>
+      </VideoContainer>
       <NavigationBar activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
       <hr/>
       <div className='main'>

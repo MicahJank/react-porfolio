@@ -58,6 +58,12 @@ const Container = styled.section`
         }
     }
 
+    .cards {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .bottom-section {
         margin-top: 80px;
         display: flex;
@@ -94,17 +100,21 @@ const Portfolio = (props) => {
         props.setActiveComponent('Contact');
     }
     return (
-        <Fade duration={4} animation={animation} fadeDistance={2000} playState={playState}>
-            <Container visible={props.visible} className='portfolio'>
-                <ProjectCard img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
-                <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
-                <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
-                <div className="bottom-section">
-                    <Header className="title">like what you see?</Header>
-                    <Button onClick={handleClick} className='portfolio' primary size='massive'>Contact Me!</Button>
-                </div>
-            </Container>
-        </Fade>
+        <>
+            <Fade duration={4} animation={animation} fadeDistance={2000} playState={playState}>
+                <Container visible={props.visible} className='portfolio'>
+                    <div className='cards'>
+                        <ProjectCard img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
+                        <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
+                        <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
+                    </div>
+                    <div className="bottom-section">
+                        <Header className="title">like what you see?</Header>
+                        <Button onClick={handleClick} className='portfolio' primary size='massive'>Contact Me!</Button>
+                    </div>
+                </Container>
+            </Fade>
+        </>
     )
 };
 
