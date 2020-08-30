@@ -18,7 +18,7 @@ const Container = styled.div`
   hr {
     width: 40%;
   }
-`;
+`; 
 
 const VideoContainer = styled.div`
  position: absolute;
