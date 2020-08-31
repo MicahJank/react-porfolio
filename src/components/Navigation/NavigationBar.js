@@ -4,7 +4,8 @@ import { Input, Menu } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
-const Nav = styled.nav` 
+const Nav = styled.nav`
+
     .ui.menu {
         display: flex;
         justify-content: center;
@@ -17,6 +18,7 @@ const Nav = styled.nav`
         margin: 1rem 1rem 0;
         width: 10%;
         border-radius: 1rem;
+        transition: background 0.5s;
 
 
         :hover {
@@ -39,17 +41,17 @@ const NavigationBar = (props) => {
             <Menu secondary stackable>
                 <Menu.Item
                     name='Intro'
-                    active={active === 'Intro'}
+                    active={props.activeComponent === 'Intro'}
                     onClick={handleClick}
                 />
                 <Menu.Item 
                     name='Portfolio'
-                    active={active === 'Portfolio'}
+                    active={props.activeComponent === 'Portfolio'}
                     onClick={handleClick}
                 />
                 <Menu.Item 
                     name='Contact'
-                    active={active === 'Contact'}
+                    active={props.activeComponent === 'Contact'}
                     onClick={handleClick}
                 /> 
             </Menu>

@@ -14,9 +14,9 @@ const Container = styled.section`
     align-items: center;
     position: absolute;
     left: 0;
+    top: 8%;
     opacity: 1;
     transition: opacity 1s;
-     
 
     .ui.medium.centered.image {
         margin-top: 4rem;
@@ -45,6 +45,8 @@ const Container = styled.section`
             background-color: #46c4ea;
         }
     }
+
+
 
 `;
 
