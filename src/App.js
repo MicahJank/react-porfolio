@@ -36,10 +36,13 @@ const Container = styled.div`
 
 const VideoContainer = styled.div`
   width: 100%;
-  box-shadow: 0px 33px 34px 0px rgba(15,15,15,0.34);
+  box-shadow: 0px 33px 153px 0px rgba(255,0,0,0.35);
 
   video {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 `;
 
