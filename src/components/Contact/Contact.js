@@ -17,7 +17,7 @@ const Container = styled.section`
     justify-content: center;
     position: absolute;
     left: 0;
-    top: 25%;
+    top: 120px;
 
     .ui.form .field>label {
         display: none;

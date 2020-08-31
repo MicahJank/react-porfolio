@@ -4,7 +4,6 @@ import NavigationBar from './components/Navigation/NavigationBar.js';
 import Intro from './components/Intro/Intro.js';
 import Portfolio from './components/Portfolio/Portfolio.js';
 import Contact from './components/Contact/Contact.js';
-import Grid from './components/Grid/Grid.js';
 import { useSessionStorage } from './utils/useSessionStorage.js';
 import video from './components/VideoBG/gameoflife-edit.mp4';
 
@@ -27,21 +26,21 @@ const Container = styled.div`
     z-index: 5
   }
   
+  .main {
+    position: relative;
+    z-index: 4;
+    top: 8%;
+  }
+
 `; 
 
 const VideoContainer = styled.div`
- width: 100%;
-
- box-shadow: 0px 33px 34px 0px rgba(15,15,15,0.34);
+  width: 100%;
+  box-shadow: 0px 33px 34px 0px rgba(15,15,15,0.34);
 
   video {
     width: 100%;
   }
-`;
-
-const FadeUp = styled.div`
-  width: 100%;
-  height: 100%;
 `;
 
 
