@@ -3,12 +3,13 @@ import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Cell from './Cell.js';
 import styled from 'styled-components';
 
-const numCols = 35;
-const numRows = 35;
+const numCols = 50;
+const numRows = 30;
 
 // operations
 // this will make it easier for me to determine the neighbors of an 'alive' cell
 // where [0,0] is the alive cell we are checking
+
 const operations = [
     [0,1], // right of alive cell
     [0,-1], // left of alive cell
@@ -44,15 +45,10 @@ const Grid = () => {
     const [running, setRunning] = useState(false);    
     const runningRef = useRef(running);
     runningRef.current = running;
-  
 
     // useCallback will return a memoised version of the function - i.e. should speed up the application since it will
     // be using recursion
     const runGame = useCallback(() => {
-        // the conditions that breaks the recursion loop
-        if(!runningRef.current) {
-            return;
-        }
   
         // grid is the current value of the grid
         // since i am mapping over it the returned result is a copy of the original and doesnt mutate the original
@@ -62,10 +58,9 @@ const Grid = () => {
                 // nested arrays inside grid so i need to map again to make sure the nested arrays are copied as well
                 return rowValue.map((colValue, colIndex) => { 
                     let neighbors = 0;
-                    // let currentCell = [rowIndex, colIndex];
+                    
+                    // used for finding out which cells should be turned on or off
                     operations.forEach(([x,y]) => {
-                        // let newRowIndex = rowIndex;
-                        // let newColIndex = colIndex;
                         let newRowIndex = rowIndex + x;
                         let newColIndex = colIndex + y;
 
@@ -87,7 +82,7 @@ const Grid = () => {
                         }
                     });
                     
-                    // gridCopy is the grid that we can manipulate while the 'grid' is being displayed to the use
+
                     if ((grid[rowIndex][colIndex] === 1 && neighbors < 2) || (grid[rowIndex][colIndex] === 1 && neighbors > 3)) {
                         return 0;
                     } else if (grid[rowIndex][colIndex] === 0 && neighbors === 3) {
@@ -105,6 +100,7 @@ const Grid = () => {
     }, [])
 
 
+    // set the random grid to state first and starts the runGame loop
     useEffect(() => {
         setCurrentGrid(generateRandom());
         setRunning(true);
