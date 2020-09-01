@@ -3,20 +3,12 @@ import styled from 'styled-components';
 
 const CellSquare = styled.div`
     
-   
-
     &:focus {
         outline: none;
     }
 `;
 
 const Cell = ({ clickFunction, key, row, col, gameRunning, cellOn }) => {
-
-    const toggleCell = () => {
-        if (!gameRunning) {
-            clickFunction(row, col)
-        }
-    }
 
    const styles={
         width: 20,
@@ -26,7 +18,7 @@ const Cell = ({ clickFunction, key, row, col, gameRunning, cellOn }) => {
     }
 
     return (
-        <CellSquare className='cell' onClick={toggleCell} style={styles} />
+        <CellSquare className='cell' style={styles} />
     )
 }
 
