@@ -104,7 +104,7 @@ const Portfolio = (props) => {
             <Fade duration={4} animation={animation} fadeDistance={2000} playState={playState}>
                 <Container visible={props.visible} className='portfolio'>
                     <div className='cards'>
-                        <ProjectCard img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
+                        <ProjectCard deployment="https://tidyhive.vercel.app" github="https://github.com/MicahJank/homerun-fe/blob/master/README.md" img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
                         <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
                         <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
                     </div>

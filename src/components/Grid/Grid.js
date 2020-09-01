@@ -37,7 +37,7 @@ const GridContainer = styled.div`
 const Grid = () => {
     const [currentGrid, setCurrentGrid] = useState([]);
     // i am using the speed in the useCallback hook - therefore i will need to make a ref of it so the speed can update properly
-    const [speed, setSpeed] = useState(2000); // speed is in ms
+    const [speed, setSpeed] = useState(5000); // speed is in ms
     const speedRef = useRef(speed);
     speedRef.current = speed;
 
@@ -112,7 +112,7 @@ const Grid = () => {
         <GridContainer>
             <div style={
                 { display: 'grid',
-                gridTemplateColumns: `repeat(${numCols}, 0.5fr)`,
+                gridTemplateColumns: `repeat(${numCols}, 5.5fr)`,
                 width: '100vw',
                 height: '100vh'
                 }} 
