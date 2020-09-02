@@ -35,7 +35,8 @@ const GridContainer = styled.div`
 `;
 
 const Grid = () => {
-    const [currentGrid, setCurrentGrid] = useState([]);
+    const [currentGrid, setCurrentGrid] = useState(generateRandom());
+
     // i am using the speed in the useCallback hook - therefore i will need to make a ref of it so the speed can update properly
     const [speed, setSpeed] = useState(5000); // speed is in ms
     const speedRef = useRef(speed);
@@ -49,9 +50,7 @@ const Grid = () => {
     // useCallback will return a memoised version of the function - i.e. should speed up the application since it will
     // be using recursion
     const runGame = useCallback(() => {
-  
-        // grid is the current value of the grid
-        // since i am mapping over it the returned result is a copy of the original and doesnt mutate the original
+        
         setCurrentGrid((grid) => {
 
             return grid.map((rowValue, rowIndex) => {
@@ -94,7 +93,6 @@ const Grid = () => {
                 })
             })
         });
-
         // re-run the function after x ms
         setTimeout(runGame, speedRef.current);
     }, [])
@@ -102,7 +100,7 @@ const Grid = () => {
 
     // set the random grid to state first and starts the runGame loop
     useEffect(() => {
-        setCurrentGrid(generateRandom());
+        // setCurrentGrid(generateRandom());
         setRunning(true);
         runningRef.current = true;
         runGame();
