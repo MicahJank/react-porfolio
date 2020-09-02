@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const numCols = 50;
 const numRows = 30;
-const numOfCells = 30 * 30;
 
 // operations
 // this will make it easier for me to determine the neighbors of an 'alive' cell
@@ -24,11 +23,11 @@ const operations = [
 
 // creates a grid with random values alive
 const generateRandom = () => {
-    const grid = [];
-    for (let i = 0; i < numOfCells; i++) {
-      grid.push(Math.random() > 0.7 ? 1: 0);
+    const rows = [];
+    for (let i = 0; i < numRows; i++) {
+      rows.push(Array.from(Array(numCols), () => Math.random() > 0.7 ? 1: 0))
     }
-    return grid;
+    return rows;
 }
 
 const GridContainer = styled.div`
@@ -49,57 +48,56 @@ const Grid = () => {
 
     // useCallback will return a memoised version of the function - i.e. should speed up the application since it will
     // be using recursion
-    // const runGame = useCallback(() => {
+    const runGame = useCallback(() => {
   
-    //     // grid is the current value of the grid
-    //     // since i am mapping over it the returned result is a copy of the original and doesnt mutate the original
-    //     setCurrentGrid((grid) => {
+        // grid is the current value of the grid
+        // since i am mapping over it the returned result is a copy of the original and doesnt mutate the original
+        setCurrentGrid((grid) => {
 
-    //         return grid.map((cell, cellIndex) => {
-    //             // used for finding out which cells should be turned on or off
-    //             operations.forEach(([x,y]) => {
-    //                 let newRowIndex = rowIndex + x;
-    //                 let newColIndex = colIndex + y;
-
-    //                 // if else checks here will make the game wrap around the grid
-    //                 if (newRowIndex < 0) {
-    //                     newRowIndex = numRows - 1;
-    //                 } else if (newRowIndex > numRows - 1) {
-    //                     newRowIndex = 0
-    //                 }
-    //                 if (newColIndex < 0) {
-    //                     newColIndex = numCols - 1;
-    //                 } else if (newColIndex > numCols - 1) {
-    //                     newColIndex = 0
-    //                 }
-
-
-    //                 if (newRowIndex >= 0 && newRowIndex < numRows && newColIndex >= 0 && newColIndex < numCols) {
-    //                     neighbors += grid[newRowIndex][newColIndex]; 
-    //                 }
-    //             });
-    //             // nested arrays inside grid so i need to map again to make sure the nested arrays are copied as well
-    //             return rowValue.map((colValue, colIndex) => { 
-    //                 let neighbors = 0;
+            return grid.map((rowValue, rowIndex) => {
+                // nested arrays inside grid so i need to map again to make sure the nested arrays are copied as well
+                return rowValue.map((colValue, colIndex) => { 
+                    let neighbors = 0;
                     
+                    // used for finding out which cells should be turned on or off
+                    operations.forEach(([x,y]) => {
+                        let newRowIndex = rowIndex + x;
+                        let newColIndex = colIndex + y;
+
+                        // if else checks here will make the game wrap around the grid
+                        if (newRowIndex < 0) {
+                            newRowIndex = numRows - 1;
+                        } else if (newRowIndex > numRows - 1) {
+                            newRowIndex = 0
+                        }
+                        if (newColIndex < 0) {
+                            newColIndex = numCols - 1;
+                        } else if (newColIndex > numCols - 1) {
+                            newColIndex = 0
+                        }
+
+    
+                        if (newRowIndex >= 0 && newRowIndex < numRows && newColIndex >= 0 && newColIndex < numCols) {
+                            neighbors += grid[newRowIndex][newColIndex]; 
+                        }
+                    });
                     
-                    
 
-    //                 if ((grid[rowIndex][colIndex] === 1 && neighbors < 2) || (grid[rowIndex][colIndex] === 1 && neighbors > 3)) {
-    //                     return 0;
-    //                 } else if (grid[rowIndex][colIndex] === 0 && neighbors === 3) {
-    //                     return 1;
-    //                 } else {
-    //                     return colValue; 
-    //                 }
+                    if ((grid[rowIndex][colIndex] === 1 && neighbors < 2) || (grid[rowIndex][colIndex] === 1 && neighbors > 3)) {
+                        return 0;
+                    } else if (grid[rowIndex][colIndex] === 0 && neighbors === 3) {
+                        return 1;
+                    } else {
+                        return colValue; 
+                    }
 
-    //             })
-    //         })
-    //     });
+                })
+            })
+        });
 
-    //     // re-run the function after x ms
-    //     setTimeout(runGame, speedRef.current);
-    // }, [])
+        // re-run the function after x ms
+        setTimeout(runGame, speedRef.current);
+    }, [])
 
 
     // set the random grid to state first and starts the runGame loop
@@ -107,24 +105,24 @@ const Grid = () => {
         setCurrentGrid(generateRandom());
         setRunning(true);
         runningRef.current = true;
-        // runGame();
+        runGame();
     },[])
-
-
 
     return (
         <GridContainer>
             <div style={
                 { display: 'grid',
-                gridTemplateColumns: `repeat(${numCols}, 1fr)`,
+                gridTemplateColumns: `repeat(${numCols}, 5.5fr)`,
                 width: '100vw',
                 height: '100vh'
                 }} 
                 className="grid">
-                    {currentGrid.map((cell, i) => (
-                        <Cell cellOn={cell} 
-                        key={i}
-                        gameRunning={running} />)
+                    {currentGrid.map((rows, i) =>
+                        rows.map((cols, k) => {
+                            return <Cell cellOn={currentGrid[i][k]} 
+                                key={`${i}-${k}`} row={i} col={k} 
+                                gameRunning={running} />
+                        })
                     )}
             </div>
         </GridContainer>
