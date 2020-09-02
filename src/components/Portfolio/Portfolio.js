@@ -5,13 +5,15 @@ import ProjectCard from './ProjectCard.js';
 import styled from 'styled-components';
 
 import { Fade } from '../../utils/Animations.js';
+import { animated, useTransition } from 'react-spring';
+
 import { Header, Button } from 'semantic-ui-react'; 
 
 import tidyHive from '../../imgs/TidyHive.png';
 import githubUserCard from '../../imgs/GithubUserCards.png';
 import expatJournal from '../../imgs/ExpatJournal.png';
 
-const Container = styled.section`
+const Container = styled(animated.section)`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -74,24 +76,30 @@ const Container = styled.section`
 `;
 
 const Portfolio = (props) => {
-    const [animation, setAnimation] = useState('FadeInLeft')
-    const [playState, setPlayState] = useState('stop');
+    const [animation, setAnimation] = useState('')
+    const [playState, setPlayState] = useState(true);
+
+    const transitions = useTransition(playState, null, {
+        from: animation === "FadeInLeft" ? { opacity: 0, transform: 'translate(-100%)' } : { opacity: 0, transform: 'translate(100%)' },
+        enter: { opacity: 1, transform: 'translateX(0)' },
+        leave: animation === "FadeOutRight" ? { opacity: 0, transform: 'translate(100%)' } : { opacity: 0, transform: 'translate(-100%)' },
+    })
 
     useEffect(() => {
         switch(props.activeComponent) {
             case "Intro":
-                setPlayState('play');
+                setPlayState(false);
                 setAnimation("FadeOutRight");
                 break;
 
             case "Contact":
-                setPlayState('play');
+                setPlayState(false);
                 setAnimation("FadeOutLeft");
                 break;
 
             default:
-                setPlayState('play');
-                setAnimation("FadeInLeft")
+                setPlayState(true);
+                setAnimation( animation === "FadeOutLeft" ? "FadeInLeft" : "FadeInRight")
         }
     }, [props.activeComponent])
 
@@ -99,23 +107,22 @@ const Portfolio = (props) => {
         e.preventDefault();
         props.setActiveComponent('Contact');
     }
-    return (
+    return transitions.map(({ item, key, props }) => 
+    (item &&
         <>
-            <Fade duration={4} animation={animation} fadeDistance={2000} playState={playState}>
-                <Container visible={props.visible} className='portfolio'>
-                    <div className='cards'>
-                        <ProjectCard deployment="https://tidyhive.vercel.app" github="https://github.com/MicahJank/homerun-fe/blob/master/README.md" img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
-                        <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
-                        <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
-                    </div>
-                    <div className="bottom-section">
-                        <Header className="title">like what you see?</Header>
-                        <Button onClick={handleClick} className='portfolio' primary size='massive'>Contact Me!</Button>
-                    </div>
-                </Container>
-            </Fade>
+            <Container key={key} style={props} visible={props.visible} className='portfolio'>
+                <div className='cards'>
+                    <ProjectCard deployment="https://tidyhive.vercel.app" github="https://github.com/MicahJank/homerun-fe/blob/master/README.md" img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
+                    <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
+                    <ProjectCard img={githubUserCard} title={'Github User Cards'} description={''} />
+                </div>
+                <div className="bottom-section">
+                    <Header className="title">like what you see?</Header>
+                    <Button onClick={handleClick} className='portfolio' primary size='massive'>Contact Me!</Button>
+                </div>
+            </Container>
         </>
-    )
+    ))
 };
 
 export default Portfolio;

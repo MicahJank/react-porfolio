@@ -8,7 +8,7 @@ const CellSquare = styled.div`
     }
 `;
 
-const Cell = ({ clickFunction, key, row, col, gameRunning, cellOn }) => {
+const Cell = ({ cellOn }) => {
 
    const styles={
         width: 20,

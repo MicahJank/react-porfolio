@@ -6,8 +6,9 @@ import { Image, Header, Button } from 'semantic-ui-react';
 import micahLogo from '../../imgs/Micah-Svg.svg';
 
 import { Fade } from '../../utils/Animations.js';
+import { animated, useTransition } from 'react-spring';
 
-const Container = styled.section`
+const Container = styled(animated.section)`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,8 +16,6 @@ const Container = styled.section`
     position: absolute;
     left: 0;
     top: 8%;
-    opacity: 1;
-    transition: opacity 1s;
 
     .ui.medium.centered.image {
         margin-top: 4rem;
@@ -52,25 +51,30 @@ const Container = styled.section`
 
 const Intro = (props) => {
 
-    const [animation, setAnimation] = useState('FadeInLeft')
-    const [playState, setplayState] = useState('stop')
-    
+    const [animation, setAnimation] = useState('')
+    const [playState, setplayState] = useState(true)
+    // const springProps = useSpring({opacity: 1, from: {opacity: 0}});
+    const transitions = useTransition(playState, null, {
+        from: animation === "FadeInLeft" ? { opacity: 0, transform: 'translate(-100%)' } : { opacity: 0, transform: 'translateX(100%)' },
+        enter: { opacity: 1, transform: 'translateX(0)' },
+        leave: { opacity: 0, transform: 'translate(-100%)' },
+    })
 
     useEffect(() => {
         switch(props.activeComponent) {
             case "Portfolio":
-                setplayState('play');
                 setAnimation('FadeOutLeft');
+                setplayState(false)
                 break;
 
             case "Contact":
-                setplayState('play');
                 setAnimation('FadeOutLeft');
+                setplayState(false)
                 break; 
 
             default:
-                setplayState('play');
                 setAnimation('FadeInLeft');
+                setplayState(true)
         }
     }, [props.activeComponent])
 
@@ -78,17 +82,15 @@ const Intro = (props) => {
         e.preventDefault();
         props.setActiveComponent('Portfolio');
     }
-    
-    return (
-        <Fade duration={2} animation={animation} fadeDistance={1100} playState={playState}>
-            <Container visible={props.visible} className='intro'>
-                <Image centered size='medium' src={micahLogo} />
-                <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
-                <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
-                <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
-            </Container>
-        </Fade>
-    )
+    return transitions.map(({ item, key, props }) => 
+     (item &&
+        <Container key={key} style={props} visible={props.visible} className='intro'>
+            <Image centered size='medium' src={micahLogo} />
+            <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
+            <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
+            <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
+        </Container>
+    ))
 };
 
 
