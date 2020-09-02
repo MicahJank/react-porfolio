@@ -7,11 +7,12 @@ import styled from 'styled-components';
 import { Fade } from '../../utils/Animations.js';
 
 import useForm from '../../utils/useForm.js';
+import { animated, useTransition } from 'react-spring';
 
 import micahLogo from '../../imgs/Micah-Svg.svg';
 
 
-const Container = styled.section`
+const Container = styled(animated.section)`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -41,11 +42,17 @@ const Container = styled.section`
 
 const Contact = (props) => {
     // determines what animation the component will render with
-    const [animation, setAnimation] = useState('FadeInLeft')
+    const [animation, setAnimation] = useState('')
 
     // determines when the component should play the animation - default is stop because on initial load of page if the
     // component is not the active component it should be invisible
-    const [playState, setPlayState] = useState('stop');
+    const [playState, setPlayState] = useState(true);
+
+    const transitions = useTransition(playState, null, {
+        from: animation === "FadeInLeft" ? { opacity: 0, transform: 'translate(100%)' } : { opacity: 0, transform: 'translateX(100%)' },
+        enter: { opacity: 1, transform: 'translateX(0)' },
+        leave: { opacity: 0, transform: 'translate(100%)' },
+    })
 
     // useForm will help keep the state of the form
     const [state, handleChange, clearForm, errors] = useForm();
@@ -60,20 +67,19 @@ const Contact = (props) => {
 
     // the useEffect will run whenever the activeComponent changes in the App.js
     useEffect(() => {
-        console.log("TCL: Contact -> props.activeComponent", props.activeComponent)
         switch(props.activeComponent) {
             case "Intro":
-                setPlayState('play');
+                setPlayState(false);
                 setAnimation("FadeOutRight");
                 break;
 
             case "Portfolio":
-                setPlayState('play');
+                setPlayState(false);
                 setAnimation("FadeOutRight");
                 break;
 
             default:
-                setPlayState('play');
+                setPlayState(true);
                 setAnimation("FadeInLeft")
         }
     }, [props.activeComponent]);
@@ -100,10 +106,10 @@ const Contact = (props) => {
         xhr.send(data);
     }
 
-    return (
+    return transitions.map(({ item, key, props }) => 
+    (item &&
         <>
-        <Fade duration={3} animation={animation} fadeDistance={1300} playState={playState}>
-            <Container>
+            <Container key={key} style={props}>
                 <Form action={'https://formspree.io/mvowwebd'} method={"POST"} size="massive" onSubmit={submitHandler} loading={loading}>
                     <Form.Group>
                         <Form.Field
@@ -170,10 +176,9 @@ const Contact = (props) => {
                     </Modal>
                 </TransitionablePortal>
             </Container> 
-        </Fade>
         {/* status === 'SUCCESS' */}
         </>
-    );
+    ));
 };
 
 export default Contact;

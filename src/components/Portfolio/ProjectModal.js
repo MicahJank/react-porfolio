@@ -1,7 +1,12 @@
 import React from 'react';
 
-import { Modal, Button, Header, Image, Embed } from 'semantic-ui-react';
+import { Modal, Button, Header, Image, Embed, Divider, Icon} from 'semantic-ui-react';
+import styled from 'styled-components';
 
+const LowerSection = styled.div`
+    display: flex;
+    align-items: baseline;
+`;
 const ProjectModal = props => {
 
     return (
@@ -11,14 +16,22 @@ const ProjectModal = props => {
             </Modal.Header>
             <Modal.Content className={'middle-section'}>
                 <Modal.Description>
-                    <Header>{props.title}</Header>
-                    <p>{props.description}</p>
+                    <Header as="h1">{props.title}</Header>
+                    <h3>{props.description}</h3>
                 </Modal.Description>
             </Modal.Content>
+            <Divider/>
             <Modal.Content>
-                <Modal.Description>
-                    Hello
-                </Modal.Description>
+                <LowerSection>
+                <Button as="a" href={props.github} size='massive' icon labelPosition='left'>
+                <Icon name='github' />
+                Repository
+                </Button>
+                <Button as="a" href={props.deployment} size='massive' icon labelPosition='left'>
+                <Icon name='desktop' />
+                Deployment
+                </Button>
+                </LowerSection>
             </Modal.Content> 
         </>
     )

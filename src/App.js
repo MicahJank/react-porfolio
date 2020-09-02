@@ -8,6 +8,8 @@ import { useSessionStorage } from './utils/useSessionStorage.js';
 import video from './components/VideoBG/gameoflife-edit.mp4';
 import Grid from './components/Grid/Grid.js';
 
+
+
 import styled from 'styled-components';
 
 
@@ -48,15 +50,13 @@ const VideoContainer = styled.div`
 `;
 
 
+
 function App() {
   // the active component is what determines which component is visible on the screen
   const [activeComponent, setActiveComponent] = useSessionStorage('active', 'Intro');
   const [transitionActive, setTransitionActive] = useState(false);
 
-  useEffect(() => {
-    setTransitionActive(!transitionActive)
-    console.log('component changed')
-  }, [activeComponent])
+
 
   return (
     <>
