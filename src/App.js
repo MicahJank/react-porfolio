@@ -21,6 +21,9 @@ const Container = styled.div`
 
   hr {
     width: 40%;
+    @media screen and (max-width: 500px) {
+      display: none;
+  }
   }
 
   .navigation {
@@ -36,18 +39,6 @@ const Container = styled.div`
   }
 
 `; 
-
-const VideoContainer = styled.div`
-  width: 100%;
-  box-shadow: 0px 33px 153px 0px rgba(255,0,0,0.35);
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-`;
 
 
 
@@ -71,11 +62,6 @@ function App() {
         <Portfolio setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
         <Contact setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
       </div>
-      {/* <VideoContainer>
-        <video autoPlay loop muted>
-          <source src={video} type="video/mp4" />
-        </video>
-      </VideoContainer> */}
     </Container>
     </>
   );
