@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
-import { Input, Menu } from 'semantic-ui-react';
+import { Input, Menu, Icon, Button } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-
     .ui.menu {
         display: flex;
         justify-content: center;
         text-align: center;
+        @media screen and (max-width: 500px) {
+            display: none;
+        }
     }
     .ui.menu a.item, .ui.menu a.item.active {
         display: flex;
@@ -20,13 +22,24 @@ const Nav = styled.nav`
         border-radius: 1rem;
         transition: background 0.5s;
 
-
         :hover {
         color: white;
         border-radius: 1rem;
         }
     }
+
+    .bars-button {
+        display: none;
+
+        @media screen and (max-width: 500px) {
+            display: block;
+            width: 100%;
+        }
+    }
+
 `;
+
+
 
 const NavigationBar = (props) => {
     const [active, setActive] = useState('');
@@ -38,6 +51,7 @@ const NavigationBar = (props) => {
 
     return (
         <Nav className='navBar'>
+            <Button color='blue' className="bars-button" icon='bars' size="massive" />
             <Menu secondary stackable>
                 <Menu.Item
                     name='Intro'
