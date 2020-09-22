@@ -5,7 +5,6 @@ import Intro from './components/Intro/Intro.js';
 import Portfolio from './components/Portfolio/Portfolio.js';
 import Contact from './components/Contact/Contact.js';
 import { useSessionStorage } from './utils/useSessionStorage.js';
-import video from './components/VideoBG/gameoflife-edit.mp4';
 import Grid from './components/Grid/Grid.js';
 
 
@@ -22,8 +21,8 @@ const Container = styled.div`
   hr {
     width: 40%;
     @media screen and (max-width: 500px) {
-      display: none;
-  }
+      width: 70%;
+    }
   }
 
   .navigation {
