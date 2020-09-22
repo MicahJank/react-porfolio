@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Form, Input, TextArea, Button, Modal, Message, Image, Transition, TransitionablePortal } from 'semantic-ui-react';
+import { Form, Input, TextArea, Button, Modal, Message, Image, Transition, TransitionablePortal, Divider, Icon, Header, Label } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -14,30 +14,95 @@ import micahLogo from '../../imgs/Micah-Svg.svg';
 
 const Container = styled(animated.section)`
     width: 100%;
-    display: flex;
-    justify-content: center;
     position: absolute;
     left: 0;
     top: 120px;
 
+    .ui.form {
+        max-width: 40%;
+        margin: 0 auto;
+        @media screen and (max-width: 700px) {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
     .ui.form .field>label {
         display: none;
+    }
+
+    .fields {
+        width: 100%;
+        @media screen and (max-width: 700px) {
+            justify-content: center;
+        }
+    }
+
+    .field {
+        width: 100%;
+        @media screen and (max-width: 700px) {
+            padding: 0 !important;
+            width: 90%;
+            justify-content: center;
+            margin-top: 20px !important;
+        }
     }
 
     .field.submitBtn {
         display: flex;
         justify-content: flex-end;
+
+        @media screen and (max-width: 700px) {
+            justify-content: center;
+        }
     }
 
     .field .ui.button {
         font-size: 1.5rem;
         width: 40%;
+
+        @media screen and (max-width: 700px) {
+            width: 70%;
+            font-size: 2rem;
+        }
     }
 
     .ui.modal.transition.visible.active {
         background-color: black;
     }
 
+
+    .connect {
+        margin-top: 30px;
+        h1 {
+            color: white;
+        }
+    }
+
+`;
+
+
+const ConnectSection = styled.section`
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+
+    @media screen and (min-width: 700px) {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .ui.label.linkedin {
+        background-color: #2867B2 !important;
+        color: white;
+    }
+
+    .ui.label.twitter {
+        background-color: #1DA1F2 !important;
+        color: white;
+    }
 `;
 
 const Contact = (props) => {
@@ -164,6 +229,7 @@ const Contact = (props) => {
                             type="submit" 
                         />  
                 </Form>
+             
                 <TransitionablePortal open={openModal} transition={{animation: "scale", duraction: 1000}}>
                     <Modal style={{ background: 'none', boxShadow: 'none'}} open={openModal} onClose={() => setOpenModal(false)}>
                         {/* <Transition animation='fade up' duration={1000} visible={true} > */}
@@ -175,6 +241,27 @@ const Contact = (props) => {
                         {/* </Transition> */}
                     </Modal>
                 </TransitionablePortal>
+
+                <Divider className="connect" horizontal>
+                    <Header as='h1'>
+                        <Icon name='talk' />
+                        Connect With Me
+                    </Header>
+                </Divider>
+                <ConnectSection>
+                    <Label className='linkedin' size='massive' as='a' href="https://www.linkedin.com/in/micah-jank/">
+                        <Icon name='linkedin alternate' />
+                        Linkedin
+                    </Label>
+                    <Label className='twitter' size='massive' as='a' href="https://twitter.com/MicahJanke">
+                        <Icon name='twitter' />
+                        Twitter
+                    </Label>
+                    <Label className='github' color='black' size='massive' as='a' href="https://github.com/MicahJank">
+                        <Icon name='github' />
+                        Github
+                    </Label>
+                </ConnectSection>
             </Container> 
         {/* status === 'SUCCESS' */}
         </>
