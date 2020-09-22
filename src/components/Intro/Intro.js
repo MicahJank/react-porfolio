@@ -39,6 +39,11 @@ const Container = styled(animated.section)`
         text-shadow: -1px -1px 0.5px rgba(0, 0, 0, 0.5);
         box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.5), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.75);
         border-radius: 8px;
+
+        @media screen and (max-width: 500px) {
+            width: 300px;
+            font-size: 2.5rem;
+        }
         
         :hover {
             background-color: #46c4ea;
