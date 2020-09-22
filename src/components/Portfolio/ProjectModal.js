@@ -6,6 +6,14 @@ import styled from 'styled-components';
 const LowerSection = styled.div`
     display: flex;
     align-items: baseline;
+    justify-content: center;
+    
+    .button {
+        @media screen and (max-width: 400px) {
+            font-size: 1.5rem !important;
+        }
+    }
+    
 `;
 const ProjectModal = props => {
 
