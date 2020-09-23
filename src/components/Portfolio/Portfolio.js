@@ -163,8 +163,8 @@ const Portfolio = (props) => {
                 <Header className="title-sm"><span>Click</span> a project to see more info!</Header>
                 <div className='cards'>
                     <ProjectCard deployment="https://tidyhive.vercel.app" github="https://github.com/MicahJank/homerun-fe/blob/master/README.md" img={tidyHive} title={'TidyHive'} description={'TidyHive is a home organizational tool where members of a household can create, assign, and complete tasks.'} />
-                    <ProjectCard img={expatJournal} title={'Expat Journal'} description={''} />
-                    <ProjectCard img={githubUserCard} title={'Github User Search'} description={''} />
+                    <ProjectCard deployment="https://expat-journal-savareen.netlify.app/#/sign-in" github="https://github.com/MicahJank/expat-journal/blob/master/README.md" img={expatJournal} title={'Expat Journal'} description={'Expat Journal is a place for travelers and expats to share their experiences.'} />
+                    <ProjectCard deployment="https://github-user-search-tawny.vercel.app/" github="https://github.com/MicahJank/github-user-search/blob/master/README.md" img={githubUserCard} title={'Github User Search'} description={'An easy and quick way to find users and their followers.'} />
                 </div>
                 <div className="bottom-section">
                     <Header className="title">like what you see?</Header>
