@@ -85,23 +85,50 @@ const Container = styled(animated.section)`
 
 
 const ConnectSection = styled.section`
-    margin-top: 30px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: 30px auto;
 
-    @media screen and (min-width: 700px) {
-        width: 60%;
-        margin: 0 auto;
+    @media screen and (max-width: 700px) {
+        width: 90%;
     }
 
+    .ui.label {
+        transition: width 1s;
+        width: 150px;
+        @media screen and (max-width: 700px) {
+            font-size: 3rem;
+            width: 300px;
+            
+        }
+        &:hover{
+            width: 200px;
+            transition: width 1s;
+
+            @media screen and (max-width: 700px) {
+                width: 400px;
+                transition: width 1s;
+            }
+        }
+        margin-bottom: 20px;
+    }
     .ui.label.linkedin {
         background-color: #2867B2 !important;
         color: white;
+        font-weight: 500;
+        
     }
 
     .ui.label.twitter {
         background-color: #1DA1F2 !important;
         color: white;
+        font-weight: 500;
+    }
+
+    .ui.label.github {
+        font-weight: 500;
     }
 `;
 

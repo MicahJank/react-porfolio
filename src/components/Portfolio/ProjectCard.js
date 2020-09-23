@@ -12,7 +12,7 @@ const ProjectCard = (props) => {
         <Card centered raised onClick={() => setProjectModal(true)}>
             {/* <Card.Header as={'h1'}>{props.title}</Card.Header> */}
             <Image src={props.img} wrapped ui={false} />
-             <Card.Content extra>
+             <Card.Content className={props.title} extra>
             {props.title}
             </Card.Content>
            

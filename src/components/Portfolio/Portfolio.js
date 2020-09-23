@@ -30,14 +30,35 @@ const Container = styled(animated.section)`
 
     .ui.centered.card {
         width: 35%;
-        height: 300px;
         max-width: 450px;
         text-align: center;
         margin: 20px;
         margin-bottom: 0;
         cursor: pointer;
 
-        @media screen and (max-width: 500px) {
+        .image {
+            height: 200px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .extra.content.TidyHive {
+            background-color: #FF9F1C;
+            color: #2b2b2b;
+        }
+        .extra.content.Expat {
+            background-color: #16BAC5;
+            color: #2b2b2b;
+        }
+        .extra.content.Github {
+            background-color: #24292E;
+            color: white;
+        }
+
+        @media screen and (max-width: 700px) {
             width: 90%;
             height: auto;
 
@@ -85,7 +106,7 @@ const Container = styled(animated.section)`
         display: flex;
         justify-content: center;
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 700px) {
             flex-direction: column;
             align-items: center;
         }
