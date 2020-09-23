@@ -200,7 +200,6 @@ const Contact = (props) => {
 
     return transitions.map(({ item, key, props }) => 
     (item &&
-        <>
             <Container key={key} style={props}>
                 <Form action={'https://formspree.io/mvowwebd'} method={"POST"} size="massive" onSubmit={submitHandler} loading={loading}>
                     <Form.Group>
@@ -290,8 +289,6 @@ const Contact = (props) => {
                     </Label>
                 </ConnectSection>
             </Container> 
-        {/* status === 'SUCCESS' */}
-        </>
     ));
 };
 
