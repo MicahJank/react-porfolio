@@ -35,7 +35,7 @@ const GridContainer = styled.div`
 `;
 
 const Grid = () => {
-    const [currentGrid, setCurrentGrid] = useState(generateRandom());
+    const [currentGrid, setCurrentGrid] = useState(() => generateRandom());
 
     // i am using the speed in the useCallback hook - therefore i will need to make a ref of it so the speed can update properly
     const [speed, setSpeed] = useState(5000); // speed is in ms
@@ -87,12 +87,14 @@ const Grid = () => {
                     } else if (grid[rowIndex][colIndex] === 0 && neighbors === 3) {
                         return 1;
                     } else {
+
                         return colValue; 
                     }
 
                 })
             })
         });
+        // console.log(number);
         // re-run the function after x ms
         setTimeout(runGame, speedRef.current);
     }, [])
@@ -118,7 +120,7 @@ const Grid = () => {
                     {currentGrid.map((rows, i) =>
                         rows.map((cols, k) => {
                             return <Cell cellOn={currentGrid[i][k]} 
-                                key={`${i}-${k}`} row={i} col={k} 
+                                key={`${i}-${k}`} 
                                 gameRunning={running} />
                         })
                     )}
