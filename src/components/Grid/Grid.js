@@ -22,6 +22,14 @@ const operations = [
   ]
 
 // creates a grid with random values alive
+// const generateRandom = () => {
+//     const rows = [];
+//     for (let i = 0; i < numRows; i++) {
+//       rows.push(Array.from(Array(numCols), () => Math.random() > 0.7 ? 1: 0))
+//     }
+//     return rows;
+// }
+
 const generateRandom = () => {
     const rows = [];
     for (let i = 0; i < numRows; i++) {
@@ -76,8 +84,8 @@ const Grid = () => {
                         }
 
     
-                        if (newRowIndex >= 0 && newRowIndex < numRows && newColIndex >= 0 && newColIndex < numCols) {
-                            neighbors += grid[newRowIndex][newColIndex]; 
+                        if (grid[newRowIndex][newColIndex]) {
+                            neighbors += grid[newRowIndex][newColIndex];                            
                         }
                     });
                     
