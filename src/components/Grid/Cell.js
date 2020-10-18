@@ -9,6 +9,7 @@ const CellSquare = styled.div`
 `;
 
 const Cell = ({ cellOn }) => {
+    // console.log('From Individual Cell')
     const styles={
         width: 20,
         height: 20,

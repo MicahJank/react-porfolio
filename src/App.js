@@ -52,7 +52,7 @@ function App() {
     <>
     <Container>
       <Grid />
-      {/* <div className='navigation'>
+      <div className='navigation'>
         <NavigationBar setTransitionActive={setTransitionActive} activeComponent={activeComponent} setActiveComponent={setActiveComponent}  />
         <hr/>
       </div>
@@ -60,7 +60,7 @@ function App() {
         <Intro setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
         <Portfolio setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
         <Contact setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-      </div> */}
+      </div>
     </Container>
     </>
   );
