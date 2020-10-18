@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const CellSquare = styled.div`
@@ -16,13 +16,11 @@ const Cell = ({ cellOn }) => {
         transition: 'background-color 3s'
     }
 
-    const memoCell = useMemo(() => <CellSquare className='cell' style={styles} />, [styles])
-
     return (
         <>
-        {memoCell}
+        <CellSquare className='cell' style={styles} />
         </>
     )
 }
 
-export default Cell;
+export default memo(Cell);

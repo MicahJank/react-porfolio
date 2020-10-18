@@ -6,6 +6,9 @@ import styled from 'styled-components';
 const numCols = 50;
 const numRows = 30;
 
+const GridContainer = styled.div`
+    position: absolute;
+`;
 // operations
 // this will make it easier for me to determine the neighbors of an 'alive' cell
 // where [0,0] is the alive cell we are checking
@@ -19,16 +22,33 @@ const operations = [
     [-1,-1], // top left diagonal of alive cell
     [1,0], // bottom of alive cell
     [-1,0], // top of alive cell
-  ]
+  ];
 
-// creates a grid with random values alive
-// const generateRandom = () => {
-//     const rows = [];
-//     for (let i = 0; i < numRows; i++) {
-//       rows.push(Array.from(Array(numCols), () => Math.random() > 0.7 ? 1: 0))
-//     }
-//     return rows;
-// }
+const getNeigbors = (rowIndex, colIndex, grid) => {
+    let neighbors = 0;
+    
+    // used for finding out which cells should be turned on or off
+    operations.forEach(([x,y]) => {
+        let newRowIndex = rowIndex + x;
+        let newColIndex = colIndex + y;
+        // if else checks here will make the game wrap around the grid
+        if (newRowIndex < 0) {
+            newRowIndex = numRows - 1;
+        } else if (newRowIndex > numRows - 1) {
+            newRowIndex = 0
+        }
+        if (newColIndex < 0) {
+            newColIndex = numCols - 1;
+        } else if (newColIndex > numCols - 1) {
+            newColIndex = 0
+        }
+        if (grid[newRowIndex][newColIndex]) {
+            neighbors += grid[newRowIndex][newColIndex];                            
+        }
+    });
+
+    return neighbors;
+}
 
 const generateRandom = () => {
     const rows = [];
@@ -38,9 +58,6 @@ const generateRandom = () => {
     return rows;
 }
 
-const GridContainer = styled.div`
-    position: absolute;
-`;
 
 const Grid = () => {
     const [currentGrid, setCurrentGrid] = useState(() => generateRandom());
@@ -64,31 +81,8 @@ const Grid = () => {
             return grid.map((rowValue, rowIndex) => {
                 // nested arrays inside grid so i need to map again to make sure the nested arrays are copied as well
                 return rowValue.map((colValue, colIndex) => { 
-                    let neighbors = 0;
                     
-                    // used for finding out which cells should be turned on or off
-                    operations.forEach(([x,y]) => {
-                        let newRowIndex = rowIndex + x;
-                        let newColIndex = colIndex + y;
-
-                        // if else checks here will make the game wrap around the grid
-                        if (newRowIndex < 0) {
-                            newRowIndex = numRows - 1;
-                        } else if (newRowIndex > numRows - 1) {
-                            newRowIndex = 0
-                        }
-                        if (newColIndex < 0) {
-                            newColIndex = numCols - 1;
-                        } else if (newColIndex > numCols - 1) {
-                            newColIndex = 0
-                        }
-
-    
-                        if (grid[newRowIndex][newColIndex]) {
-                            neighbors += grid[newRowIndex][newColIndex];                            
-                        }
-                    });
-                    
+                    let neighbors = getNeigbors(rowIndex, colIndex, grid);
 
                     if ((grid[rowIndex][colIndex] === 1 && neighbors < 2) || (grid[rowIndex][colIndex] === 1 && neighbors > 3)) {
                         return 0;
