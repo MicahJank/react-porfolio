@@ -92,7 +92,7 @@ const Intro = (props) => {
         <Container key={key} style={props} visible={props.visible} className='intro'>
             <Image centered size='medium' src={micahLogo} />
             <Header textAlign='center'>Hi. I'm Micah Jank.</Header>
-            <Header className='subHeader' textAlign='center'>a Web Developer.</Header>
+            <Header className='subHeader' textAlign='center'>a Software Developer.</Header>
             <Button onClick={handleClick} className='portfolio' primary size='massive'>Check Out My Work</Button>
         </Container>
     ))

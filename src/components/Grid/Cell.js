@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const CellSquare = styled.div`
@@ -9,8 +9,8 @@ const CellSquare = styled.div`
 `;
 
 const Cell = ({ cellOn }) => {
-
-   const styles={
+    // console.log('From Individual Cell')
+    const styles={
         width: 20,
         height: 20,
         backgroundColor: cellOn ? '#a7000080' : undefined,
@@ -18,8 +18,10 @@ const Cell = ({ cellOn }) => {
     }
 
     return (
+        <>
         <CellSquare className='cell' style={styles} />
+        </>
     )
 }
 
-export default Cell;
+export default memo(Cell);
