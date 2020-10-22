@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Image, Header, Button } from 'semantic-ui-react';
 
-import micahLogo from '../../imgs/Micah-Svg.svg';
+import micahLogo from '../../imgs/micah-svg-new.svg';
 
 import { Fade } from '../../utils/Animations.js';
 import { animated, useTransition } from 'react-spring';

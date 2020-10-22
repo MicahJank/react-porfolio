@@ -4,7 +4,7 @@ import Cell from './Cell.js';
 import styled from 'styled-components';
 
 const numCols = 50;
-const numRows = 30;
+const numRows = 25;
 
 const GridContainer = styled.div`
     position: absolute;
@@ -29,6 +29,7 @@ const getNeigbors = (rowIndex, colIndex, grid) => {
     
     // used for finding out which cells should be turned on or off
     operations.forEach(([x,y]) => {
+        // neighbors += grid[]
         let newRowIndex = rowIndex + x;
         let newColIndex = colIndex + y;
         // if else checks here will make the game wrap around the grid
