@@ -115,7 +115,7 @@ const Grid = () => {
         <GridContainer>
             <div style={
                 { display: 'grid',
-                gridTemplateColumns: `repeat(${numCols}, 5.5fr)`,
+                gridTemplateColumns: `repeat(${numCols}, 1fr)`,
                 width: '100vw',
                 height: '100vh'
                 }} 
