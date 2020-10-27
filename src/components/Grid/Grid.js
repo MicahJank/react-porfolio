@@ -4,7 +4,7 @@ import Cell from './Cell.js';
 import styled from 'styled-components';
 
 const numCols = 50;
-const numRows = 25;
+const numRows = 25; 
 
 const GridContainer = styled.div`
     position: absolute;
